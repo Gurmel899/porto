@@ -141,20 +141,23 @@
            <section class="resume-section" id="sertifikat">
                <div class="resume-section-content">
                    <h2 class="mb-5">sertifikat</h2>
-                   
+                  
+                       
+                   <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{{ asset('image')."/".get_meta_value('namafile[]') }}" alt="..." /></span>
+            
                    {{-- <table>
                        <tbody>
-                           @foreach ($data as $image)
+                           @foreach ($name as $image)
                                <tr> <td>{{ $image->id}}</td>
                                 <td>
-                                     <img src="{{ asset('/public/image'.$data) }}"style="height:120px; width:200px"/>
+                                    <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{{ asset('image')."/".get_meta_value('namafile[]') }}" alt="..." /></span>
                                </td>
                              </tr>
                             
-                           @endforeach
+                           @endforeach --}}
                         </div>
                     </tbody>
-                   </table> --}}
+                   </table>
            </section>
         
         </div>

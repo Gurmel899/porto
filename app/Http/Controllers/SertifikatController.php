@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\metadata;
 use App\Models\sertifikat;
-
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 
 class SertifikatController extends Controller
@@ -12,7 +13,8 @@ class SertifikatController extends Controller
 
     {
         $data=  sertifikat::all();
-        return view('dashboard.depan.index',compact('data'));
+        return view('dashboard.sertifikat.index',compact('data'));
+       
     }
 
     public function store(Request $request)
@@ -30,10 +32,15 @@ class SertifikatController extends Controller
                     $data = [
                         'namafile' => $name,
                     ];
-              
+                     
                 }
             }
-            sertifikat::insert($data);          
+            sertifikat::insert($data);   
+            
+            $foto_lama= get_meta_value($data);
+            File::delete(public_path('image')."/".$foto_lama);
+            
+            metadata::updateOrCreate(['meta_key'=>'_foto'],['meta_value'=>$foto_lama]);
         }
         return redirect()->route('sertifikat.index')->with('success','Berhasil Melakukan Uploads Data sertifikat');
     }

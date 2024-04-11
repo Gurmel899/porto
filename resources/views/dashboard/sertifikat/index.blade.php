@@ -11,6 +11,10 @@
                     <form method="POST" action="{{ route('sertifikat.store') }}" enctype="multipart/form-data">
                        {{ csrf_field() }} 
 
+                       @if (get_meta_value('namfile[]'))
+                       <img style="max-width:100px;max-height:100px" src="{{ asset
+                       ('image').'/'.get_meta_value('namafile[]') }}">
+                   @endif
                         <div class="form-group row">
                             <label for="namafile" class="col-md-4 col-form-label text-md-right">{{ __('File') }}</label>
                                 <div class="col-md-6">
